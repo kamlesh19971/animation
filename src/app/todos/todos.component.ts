@@ -1,4 +1,4 @@
-import { animate, keyframes, state, style, transition, trigger, useAnimation } from '@angular/animations';
+import { animate, keyframes, state, style, transition, trigger, useAnimation, AnimationEvent, query } from '@angular/animations';
 import { Component } from '@angular/core';
 import { bouceOutLeftAnimation, fade, fadeInAnimation, slide } from '../animation';
 
@@ -7,8 +7,16 @@ import { bouceOutLeftAnimation, fade, fadeInAnimation, slide } from '../animatio
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css'],
   animations: [
-    trigger('todoAnimation', [
+    trigger('todosAnimation', [
+      transition(':enter', [
+        query('h1', [
+          style({ transform: 'translateY(-30px)' }),
+          animate(1000)
+        ])
+      ])
+    ]),
 
+    trigger('todoAnimation', [
       transition(':enter', [
         useAnimation(fadeInAnimation, {
           params: {
@@ -38,5 +46,13 @@ export class TodosComponent {
   removeItem(item: any) {
     let index = this.items.indexOf(item);
     this.items.splice(index, 1);
+  }
+
+  animationStarted($event: AnimationEvent) {
+    console.log($event);
+  }
+
+  animationDone($event: AnimationEvent) {
+    console.log($event);
   }
 }
