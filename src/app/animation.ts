@@ -18,7 +18,8 @@ export let slide = trigger('slide', [
     ]),
 
     transition(':leave', [
-        animate(500, style({ transform: 'translateX(-100%)' }))
+        // animate(500, style({ transform: 'translateX(20px)' })),
+        animate('0.5s cubic-bezier(.61, .29, .07, 1.02 )', style({ transform: 'translateX(-100%)' }))
     ])
 
 ])
