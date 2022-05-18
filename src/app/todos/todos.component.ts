@@ -1,4 +1,4 @@
-import { animate, keyframes, state, style, transition, trigger, useAnimation, AnimationEvent, query, animateChild, group } from '@angular/animations';
+import { animate, keyframes, state, style, transition, trigger, useAnimation, AnimationEvent, query, animateChild, group, stagger } from '@angular/animations';
 import { Component } from '@angular/core';
 import { bouceOutLeftAnimation, fade, fadeInAnimation, slide } from '../animation';
 
@@ -20,7 +20,8 @@ import { bouceOutLeftAnimation, fade, fadeInAnimation, slide } from '../animatio
           ]),
 
           query('@todoAnimation',
-            animateChild()
+            // animateChild()
+            stagger(200, animateChild())
           )
         ])
       ])
