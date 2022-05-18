@@ -1,4 +1,4 @@
-import { animate, keyframes, state, style, transition, trigger, useAnimation, AnimationEvent, query } from '@angular/animations';
+import { animate, keyframes, state, style, transition, trigger, useAnimation, AnimationEvent, query, animateChild } from '@angular/animations';
 import { Component } from '@angular/core';
 import { bouceOutLeftAnimation, fade, fadeInAnimation, slide } from '../animation';
 
@@ -12,7 +12,11 @@ import { bouceOutLeftAnimation, fade, fadeInAnimation, slide } from '../animatio
         query('h1', [
           style({ transform: 'translateY(-30px)' }),
           animate(1000)
-        ])
+        ]),
+
+        query('@todoAnimation',
+          animateChild()
+        )
       ])
     ]),
 
